@@ -38,10 +38,11 @@ WORKDIR ${WRKDIR}
 RUN mkdir -p ${WRKDIR}
 COPY ./ ${WRKDIR}/
 
+# RUN gradle clean build
 
 # this keeps the container running until a cmd starts a server
 # ENTRYPOINT [WORKDIR, "java", "main.java"]
 
 RUN echo WORKDIR
 
-CMD [ "java", "/app/projects/main.java" ]
+CMD [ "./gradlew", "run" ]

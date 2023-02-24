@@ -4,5 +4,6 @@ services:
   app:
     build: ./
     container_name: java-app
+    # command: sleep infinity
     volumes:
       - ./:/my-app
