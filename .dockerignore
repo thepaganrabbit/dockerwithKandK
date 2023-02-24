@@ -1,0 +1,5 @@
+/Dockers
+docker-compose.yml
+README.md
+/postgres-data
+*.git
