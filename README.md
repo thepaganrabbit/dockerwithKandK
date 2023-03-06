@@ -1,11 +1,13 @@
 # Simple Java docker
 
-This is a simple docker and java setup with gradle.
+This is a simple docker and kotlin/ktor setup with gradle.
 
 ## Setting up VS Code (optional)
 
 Go to market place in VS Code and install:
-1. Extension Pack for Java
+1. Extension Pack for Java (if Java is the language used)
+2. Kotlin
+3. Remote-containers
 
 ## RUN
 
@@ -17,6 +19,15 @@ docker-compose up --build
 
 If it is the base app know that the container will just finish with a hellow world in java. If you have your own application it will put everything in the directory and do the run command. In the docker file CMD it is an array of commands to be run each command needs to be in it's own "", ["java", "this location"]. If this is a spring boot application how you usually would run it would go in the CMD. If you need it to remain open so you can ssh into the machine or work inside the mache as stated At the bottom of this Readme add inside the docker-compose.yml file command: sleep infinity. When you make this change you will need to rebuild the container. 
 
+To Use your own code just put the Dockerfile and the docker-compose.yml file in the root, update the ports if need be. 
+
+To get a container sinternal ip address to ssh into it or do other things here is the command for that:
+
+```BASH
+docker inspect -f \
+'{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' \
+container-id or tag
+```
 
 
 ## Understanding the Dockerfile
@@ -122,10 +133,26 @@ docker rm container id
 
 Add this to your extensions:
 
-[link] ms-vscode-remote.remote-containers
+[link](ms-vscode-remote.remote-containers) ms-vscode-remote.remote-containers
 
 If link does not work search for Dev Containers
 
 **Note:** if the above package is not set up correctly it will not work, it is finiky hence why I include using the package below as an option. You sould also ssh into the machine and do everything in vim there. 
 
 I found that using the remote exploror package is best for my setup, however, you will need to open a external terminal to access the terminal in the machine, VS Codes terminall seems to have a bug. there you can navigate to the icon on the sidebar, and view all remote container. If you click the open folder icon listed beside the container or in the structure it should open in VS Code and allow you to edit files inside the container. 
+
+## Useful links:
+
+Develop on a remote Docker host [VS Code Info 1](https://code.visualstudio.com/remote/advancedcontainers/develop-remote-host)
+
+Remote Development with VS Code and Docker [Meduim.com Article](https://medium.com/the-telegraph-engineering/remote-development-with-vs-code-a8d8fe8aa9e)
+
+How to use Docker for Java development [Docker and Java](https://www.infoworld.com/article/3638548/how-to-use-docker-for-java-development.html)
+
+Find Docker prebuilt images [DockerHub](https://hub.docker.com/)
+
+**Docker Training**
+
+Docker 101 Tutorial [Begginers intro to Docker](https://www.docker.com/101-tutorial/)
+
+Docker for beginners {Video} [Docker Tutorial](https://youtu.be/pTFZFxd4hOI)
