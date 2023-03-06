@@ -17,6 +17,7 @@ docker-compose up --build
 
 If it is the base app know that the container will just finish with a hellow world in java. If you have your own application it will put everything in the directory and do the run command. In the docker file CMD it is an array of commands to be run each command needs to be in it's own "", ["java", "this location"]. If this is a spring boot application how you usually would run it would go in the CMD. If you need it to remain open so you can ssh into the machine or work inside the mache as stated At the bottom of this Readme add inside the docker-compose.yml file command: sleep infinity. When you make this change you will need to rebuild the container. 
 
+To Use your own code just put the Dockerfile and the docker-compose.yml file in the root, update the ports if need be. 
 
 
 ## Understanding the Dockerfile

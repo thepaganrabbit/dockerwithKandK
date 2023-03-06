@@ -4,5 +4,7 @@ services:
   app:
     build: ./
     container_name: java-app
+    ports:
+      - 8080:8080
     volumes:
       - ./:/my-app

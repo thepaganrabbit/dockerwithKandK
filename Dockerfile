@@ -31,7 +31,7 @@ RUN echo "${WRKDIR}"
 
 USER root
 
-# EXPOSE 2030
+EXPOSE 8080
 
 WORKDIR ${WRKDIR}
 
@@ -44,4 +44,6 @@ COPY ./ ${WRKDIR}/
 
 RUN echo WORKDIR
 
-CMD [ "java", "/app/projects/main.java" ]
+RUN chmod +x gradlew
+
+CMD [ "./gradlew", "run" ]
